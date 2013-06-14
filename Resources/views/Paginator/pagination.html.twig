@@ -1,0 +1,23 @@
+{% if pagination.getLastPage() > 1 %}
+    <nav class="pagination">
+        <div class="content">
+            <span class="first qimnet-ajax-link {{ (pagination.getPage()==1) ? "current" : "" }}" {% if pages|keys|first == 1 %}style="display: none"{%endif%}>
+                <a href="{{ firstPageUrl }}"
+                   data-page="1">1</a>
+            </span>
+            <span class="pages">
+                {% for p, url in pages %}
+                    <span class="page{% if p == pagination.getPage() %} current{% endif %}">
+                        <a href="{{url}}" class="qimnet-ajax-link" data-page="{{p}}">{{p}}</a>
+                    </span>
+                {% endfor %}
+            </span>
+            <span class="last {{ (pagination.getPage()==pagination.getLastPage()) ? "current" : "" }}"
+                {% if pagination.getLastPage() == pages|keys|last %}style="display: none"{%endif%}>
+                <a href="{{ lastPageUrl }}"
+                   class="qimnet-ajax-link "
+                   data-page="{{pagination.getLastPage()}}">{{pagination.getLastPage()}}</a>
+            </span>
+        </div>
+    </nav>
+{% endif %}
