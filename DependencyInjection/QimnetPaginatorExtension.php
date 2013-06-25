@@ -24,7 +24,7 @@ class QimnetPaginatorExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
-        
+
         $container->setParameter('qimnet.paginator.limit_per_page', $config['limit_per_page']);
         $container->setParameter('qimnet.crud.templating.sliding_paginator.options', $config['sliding_paginator']);
     }
